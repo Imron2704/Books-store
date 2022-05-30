@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block content %}
+
+<script type="text/javascript">
+  function onSearch(data){
+     var search_txt = $("#search-text").val();
+     var from = $("#from").val();
+     var to = $("#to").val();
+
+     var temp = `
+     <div class="templatemo_product_box">
+            <h1></span></h1>
+            <img src="" alt="image" style="width:100px;height:120px;"/>
+            <div class="product_info">
+              <p></p>
+              <h3></h3>
+              <div class="buy_now_button">
+                <a href="">Buy Now</a>
+              </div>
+              <div class="detail_button"><a href="edit-book/{{book.id}}">Detail</a></div>
+            </div>
+          <div class="cleaner">&nbsp;</div>
+          </div>
+          <div class="cleaner_with_width">&nbsp;</div>
+     `
+
+    $.ajax({
+        url: 'ajax-search/?search-text=' + search_txt + '&from=' + from + '&to=' + to, 
+        data: {
+        
+        },
+        dataType: 'json',
+        success: function (data) {
+          $("#book-list").empty()
+          console.log(data)
+          data.map(item => {
+            $("#book-list").html(temp)
+          })
+        }
+      });
+  
+  }
+</script>
+
+<div>
+
+  <input type="text" name="search-text" placeholder="Seached text" id="search-text">
+  <input type="number" name="from-price" placeholder="Price from" id="from">
+  <input type="number" name="to-price" placeholder="price to" id="to">
+  <button onclick="onSearch()">Search</button>
+
+</div>
+
+<div  id="book-list">
+  {% for book in books %}
+          <div class="templatemo_product_box">
+            <h1>{{book.title}}</span></h1>
+            <img src=" {{book.image.url}}" alt="image" style="width:100px;height:120px;"/>
+            <div class="product_info">
+              <p>{{book.description}}</p>
+              <h3>${{book.price}}</h3>
+              <div class="buy_now_button">
+                <a href="">Buy Now</a>
+              </div>
+              <div class="detail_button"><a href="edit-book/{{book.id}}">Detail</a></div>
+            </div>
+          <div class="cleaner">&nbsp;</div>
+          </div>
+            {% endfor %}
+          <div class="cleaner_with_width">&nbsp;</div>
+          <div class="templatemo_product_box">
+            <a href="{% url 'add' %}">Add book</a></div>
+          <div class="cleaner">&nbsp;</div>
+          </div>
+          <div class="cleaner_with_width">&nbsp;</div>
+</div>
+
+{% endblock %}

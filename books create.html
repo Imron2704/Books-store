@@ -1,0 +1,7 @@
+{% load static %}
+<h2>Books Create</h2>
+<link href="{% static 'css/create_font.css' %}" rel="stylesheet" type="text/css" />
+<form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit">Save</button>
+</form>

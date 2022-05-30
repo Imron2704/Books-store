@@ -1,0 +1,12 @@
+{% load static %}
+<link href="{% static 'css/view_font.css' %}" rel="stylesheet" type="text/css" />
+<h2>Authors</h2>
+    <ul>
+        {% for author in authors %}
+        {% endfor %}
+    </ul>
+        {% for author in authors %}
+        {{ author.name }} {{ author.salutation }}<a href="../update/{{author.id}}">Update</a> <a href="../delete/{{author.id}}"> Delete</a> <br>
+        {% endfor %}
+        <a href="../create/">Create Author</a>
+

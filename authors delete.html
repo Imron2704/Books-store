@@ -1,0 +1,7 @@
+{% load static %}
+<link href="{% static 'css/delete_font.css' %}" rel="stylesheet" type="text/css" />
+<h2>Authors</h2>
+	<form action="" method="post">{% csrf_token %}
+		Are you sure to delete this author? <br>
+	<button type="submit">Confirm</button>
+</form>

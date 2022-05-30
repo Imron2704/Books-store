@@ -1,0 +1,11 @@
+{% load static %}
+<link href="{% static 'css/view_font.css' %}" rel="stylesheet" type="text/css" />
+<h2>Publishers</h2>
+<ul>
+{% for publisher in publishers %}
+{% endfor %}
+</ul>
+{% for item in publishers %}
+{{item.name}} {{item.city}} <a href="../update/{{item.id}}">Update</a> <a href="../delete/{{item.id}}"> Delete</a> <br>
+{% endfor %}
+<a href="../create/">Create Publisher</a>

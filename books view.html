@@ -1,0 +1,11 @@
+{% load static %}
+<link href="{% static 'css/view_font.css' %}" rel="stylesheet" type="text/css" />
+<h2>Books</h2>
+<ul>
+    {% for book in books %}
+    {% endfor %}
+</ul>
+    {% for item in books %}
+    {{item.tittle}} <a href="../update/{{item.id}}">Update</a> <a href="../delete/{{item.id}}"> Delete</a> <br>
+    {% endfor %}
+<a href="../create/">Create Book</a>

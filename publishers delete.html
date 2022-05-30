@@ -1,0 +1,7 @@
+{% load static %}
+<h2>Publishers</h2>
+<link href="{% static 'css/delete_font.css' %}" rel="stylesheet" type="text/css" />
+	<form action="" method="post">{% csrf_token %}
+		Are you sure to delete this publisher? <br>
+	<button type="submit">Confirm</button>
+</form>
